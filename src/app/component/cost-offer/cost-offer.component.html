@@ -55,6 +55,7 @@
         </div>
         <div  *ngIf="showSoffa">
             <mat-form-field >
+                <h1>בדיקה</h1>
                 <mat-label style="color: black;">הכנס את גודל הספה במטרים</mat-label>
                 <input type="number" matInput (change)="costOfferSoffa()" #metrsofSoffa="ngModel" name="metrsOfSoffa" [(ngModel)]="metrsOfSoffa" >
             </mat-form-field >
