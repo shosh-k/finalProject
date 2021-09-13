@@ -1,0 +1,19 @@
+<div class="image">
+    <div id="taskbar">
+        <a href="http://localhost:4200/"><img id="smallLogo" src="assets/home/logo.png"></a>
+        <div id="btns">
+            <button mat-button  matTooltip="כל המוצרים" (click)="Home()"><mat-icon>store</mat-icon></button>
+            <button mat-button  matTooltip="פרסום מודעה" (click)="Advertisement()"><mat-icon>assignment</mat-icon></button>
+            <button mat-button  matTooltip="מוצרים שאהבתי" (click)="LikeProduct()"><mat-icon>favorite</mat-icon></button>
+            <button mat-button matTooltip="איזור אישי" [matMenuTriggerFor]="menu"><mat-icon>account_circle</mat-icon></button>
+            <mat-menu #menu="matMenu">
+                <button style="margin: auto;" mat-menu-item (click)="checkValue(st)" *ngFor="let st of stutus" [value]="st.value">{{st.viewValue}}</button>
+            </mat-menu>
+        </div>
+    </div>
+    <div class="imageHome">
+        <img id="logo" src="assets/home/logo.png">
+    </div>
+</div>
+<app-home *ngIf="showHome==true"></app-home>
+<router-outlet></router-outlet>

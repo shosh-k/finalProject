@@ -1,0 +1,29 @@
+.compHome{
+    background-color: rgba(240, 240, 240, 0.89);
+    box-shadow: 30px rgb(0, 0, 0);
+}
+mat-slider {
+  width: 200px;
+  
+}
+.rightSide{
+  border-radius: 10px;
+  direction: rtl;
+}
+.styleSubCat{
+  color: rgb(124, 0, 0);
+  text-align: right;
+  margin: 10px;
+  font:bold;
+  text-decoration: underline;
+  cursor: pointer;
+}
+.tool{
+  color: black; 
+  font: bolder;
+  font-size: medium;
+  position: fixed;
+  background-color:white; 
+}
+
+

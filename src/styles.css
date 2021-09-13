@@ -1,0 +1,30 @@
+/* You can add global styles to this file, and also import other style files */
+
+.error{
+    color: red;
+}
+html, body { 
+    height: 100%; 
+    direction: rtl; 
+    text-align: center;
+    margin: auto; 
+    align-items: center;
+}
+body {
+    background-image: url("assets/home/ImgHome.png");
+    margin: 0; 
+    font-family: Roboto, "Helvetica Neue", sans-serif; 
+    background-repeat:no-repeat;
+    background-attachment:fixed;
+}
+mat-form-field{
+    width: 250px;
+}
+
+mat-icon{
+    margin: 15px 7px;
+}
+.icon{
+    height: 45px;
+    width: 25px;
+}

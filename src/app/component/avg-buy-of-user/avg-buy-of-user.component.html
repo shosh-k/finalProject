@@ -1,0 +1,67 @@
+<div class="avgPage">
+<div>
+    <p>המערכת עושה כל מאמץ על מנת לחסוך לכם מאמצים וליעל את חווית הקניה שלכם.</p>
+    <p>לשם ייעול הקניה המערכת מציגה למשתמש מחירי עלות פירוק והרכבה.</p>
+    <p>בעבור הצגת מחירים נכונה ככל האפשר, המערכת משתמשת בנתוני אמת שהוכנסו על ידי המשתמשים. וכאן אתם נכנסים לתמונה.</p>
+    <p>אנו זקוקים לנתונים שתכניסו על מחיר פירוק והרכבה ששילמתם בקנייתכם זו.</p>
+    <p>מידע זה יעזור לנו <b>למענכם</b></p>
+</div>
+<div *ngFor="let i of ListOfroute" style="max-width: 400px;">
+  <mat-accordion class="example-headers-align" multi>
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>{{i.NameProduct}}</mat-panel-title>
+        <mat-panel-description>פרטי המוצר</mat-panel-description>
+      </mat-expansion-panel-header>
+      {{ AvgFromUser(i.SubCategoryProduct)}}
+     
+  
+          <div *ngIf="needPeruk">
+            <mat-form-field  appearance="fill">
+                <mat-label style="color: black;">האם צריך פירוק?</mat-label>
+                <mat-select required [(ngModel)]="selectedPeruk" name="selectTable">
+                    <mat-option  [value]=true>כן</mat-option>
+                    <mat-option  [value]=false>לא</mat-option>
+                </mat-select>
+            </mat-form-field>
+          </div>
+        <div *ngIf="showMeter">
+          <mat-form-field >
+              <mat-label style="color: black;">הכנס את גודל המוצר במטרים</mat-label>
+              <input type="number" required matInput #metrsOfTable="ngModel" name="MetrsOfitem" [(ngModel)]="MetrsOfItem" >
+          </mat-form-field >
+        </div>
+      <div *ngIf="showBed">
+        <mat-form-field >
+            <mat-label style="color: black;">בחר את סוג המיטה</mat-label>
+            <mat-select required [(ngModel)]="selectedBed" name="select">
+                <mat-option [value]=1>מיטת יחיד</mat-option>
+                <mat-option [value]=2>מיטה זוגית</mat-option>
+                <mat-option [value]=3>מיטה וחצי</mat-option>
+                <mat-option [value]=4>מיטת תינוק</mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>
+    <div *ngIf="showCloset">
+      <mat-form-field>
+          <mat-label style="color: black;">הכנס את מספר הדלתות בארון</mat-label>
+          <input type="number" required matInput #numofDor="ngModel" name="numOfDor" [(ngModel)]="numOfDor" >
+      </mat-form-field>
+  </div>
+  <div *ngIf="showChair">
+    <mat-form-field>
+        <mat-label style="color: black;">הכנס את מספר הכסאות</mat-label>
+        <input type="number" required matInput #numofChair="ngModel" name="numOfChair" [(ngModel)]="numOfChair" >
+    </mat-form-field>
+</div>
+      <mat-form-field appearance="fill">
+        <mat-label>עלות פירוק והרכבה</mat-label>
+        <input type="number" required matInput #cost="ngModel" name="costPeruk" [(ngModel)]="CostPeruk"  min="0">
+      </mat-form-field><br>
+      <button mat-raised-button (click)="submit(i.SubCategoryProduct)">שמור</button>
+    </mat-expansion-panel>
+  </mat-accordion>
+</div>
+</div>
+
+

@@ -1,0 +1,93 @@
+
+ .popup {
+    background: rgba(0, 0, 0, 0.493);
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  justify-content: center;
+  align-items: center;
+  padding: 3px;
+  border: 1px solid #48484a;
+  border-radius: .3px;
+}
+
+.popup .pp {
+  background-color: #fff;
+  border: .5px solid #fff;
+  border-radius: 10px;
+  padding: 50px;
+  min-width: 550px;
+  min-height: 450px;
+}
+
+       .popup .pp h5 {
+          text-align: right;
+      }
+
+       .popup .pp h6 {
+          text-align: right;
+      }
+
+           .popup .pp h6 span {
+              background-color: #79797e;
+              border-radius: .3px;
+              color: #d4d3e1;
+              padding: 2px;
+              margin: 2px;
+          }
+
+       .popup .pp > div .yesno {
+          display: flex;
+          margin: 20px auto;
+      }
+
+     .popup .pp  div span {
+          background-color: #fff;
+          color: #1a455a;
+          border: 1px solid #1a455a;
+          border-radius: 10px;
+          padding: 2px 4px;
+          margin: 5px;
+          cursor: pointer;
+          min-width: 80px;
+      }
+
+         .popup .pp  div span:hover {
+              background-color: #1a455a;
+              color: #fff;
+          }
+.listProduct{
+    margin: 20px;
+    border: brown;
+    display: flex;
+    display: inline-table;  
+
+}
+.listProduct div{
+    flex: 10;
+    flex-direction: row;
+    height: 300px;
+    
+    -webkit-text-size-adjust: 100%;
+    font-size: 14px;
+    line-height: 1.28571;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    width: 220px;
+    border-radius: 8px;
+    overflow: hidden;
+    background: #fff;
+    margin-right: 0;
+    margin-left: 16px;
+    margin-bottom: 16px;
+}
+.pp div div{  
+    display: inline-table;  
+    top:0px;
+}
+.compHome{
+    background-color: rgb(240, 240, 240);}

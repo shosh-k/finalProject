@@ -1,0 +1,59 @@
+<div class="listProduct">
+    <div (click)="ShowProductDetails(product)">
+        <span style="height: 150px;"></span>
+        <span style="font: bolder;font-size: large;">{{product.NameProduct}}</span><br>
+        <span><b>{{product.PriceProduct}}</b> ש"ח </span><br>
+        <span>{{product.DescriptionProduct}}</span><br>
+        <mat-grid-list cols="1" rowHeight="17:3">
+            <mat-grid-tile>
+                <img *ngIf="heart" matTooltip="סמן כמוצר שאהבת" style="height: 40%; width: 40%; cursor: pointer;" (click)="AddToLikeProduct()" matTooltip="סמן כמוצר שאהבת" src="assets/Icons/heart.svg">
+                <img *ngIf="!heart"  matTooltip="הסר ממוצרים שאהבת"  style="height: 40%; width: 40%; cursor: pointer;" (click)="DeletFromLikeProduct()" matTooltip="הסר ממוצרים שאהבת" src="assets/Icons/redHeart.svg">
+            </mat-grid-tile>
+            <mat-grid-tile >
+                <img *ngFor="let i of statusP"style="height: 15px; width: 15px;" src="/assets/Icons/starOrange.svg">
+            </mat-grid-tile>
+        </mat-grid-list>
+    </div>
+</div>
+
+<div *ngIf="showProductDetails==true" style="display:flex;" class="popup" id="deletDiv">
+    <div class="pp">
+        <div>
+            <div>
+                <img style="height: 5%; width: 5%; cursor: pointer;" (click)="CloseShowProduct()" src="assets/Icons/close.svg">
+
+                <div style="height: 20vh;"></div>
+                <span style="font-size: 17px; margin: 10px;">          {{product.NameProduct}}         </span>
+                <img *ngIf="heart" style="height: 5%; width: 5%; cursor: pointer;" (click)="AddToLikeProduct()" #tooltip="matTooltip"
+                matTooltipHideDelay="100000" matTooltip="סמן כמוצר שאהבת" src="assets/Icons/heart.svg">
+                <img *ngIf="!heart" style="height: 5%; width: 5%; cursor: pointer;" (click)="DeletFromLikeProduct()" matTooltip="הסר ממוצרים שאהבת" src="assets/Icons/redHeart.svg">        
+                <mat-expansion-panel (click)="OpenDetail(product)" (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+                    <mat-expansion-panel-header>
+                        <mat-panel-title>{{product.NameProduct}}</mat-panel-title>
+                        <mat-panel-description>כל הפרטים על המוצר</mat-panel-description>
+                    </mat-expansion-panel-header>
+                    <p>{{product.DescriptionProduct}}</p>
+                    <p> מחיר: <b>{{product.PriceProduct}}</b></p>
+                    <p> כתובת:{{adrss}}</p>
+                    <p style="color: red;" *ngIf="moveOrBuy">למסירה</p>
+                    <p style="color: red;" *ngIf="newOrOld">המוצר חדש</p>
+                    <mat-grid-list cols="3" rowHeight="5:1">
+                        <mat-grid-tile></mat-grid-tile>
+                        <mat-grid-tile>
+                            <div *ngFor="let i of statusP" >
+                                <img style="height: 30px; width: 30px;" src="/assets/Icons/starOrange.svg">
+                            </div>
+                        </mat-grid-tile>
+                    </mat-grid-list>
+                </mat-expansion-panel>
+                <mat-expansion-panel (click)="OpenDetail(product)" (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+                    <mat-expansion-panel-header>
+                        <mat-panel-title>מחירי פירוק הובלה והרכבה</mat-panel-title>
+                        <mat-panel-description>הכנס פרטים על המוצר בעבור חישוב המחירים</mat-panel-description>
+                    </mat-expansion-panel-header>
+                        <app-cost-offer [CodeProduct]="product.CodeProduct" [subCategory]="product.SubCategoryProduct"></app-cost-offer>
+                </mat-expansion-panel>
+            </div>
+        </div>
+    </div>
+</div>

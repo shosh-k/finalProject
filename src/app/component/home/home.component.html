@@ -1,0 +1,102 @@
+<div class="compHome">
+    <div>
+        <div class="example-sidenav-content">
+          <mat-grid-list cols="5" rowHeight="3:1" >
+            <mat-grid-tile colspan="1" >
+                <div id="sort" >
+                    <button mat-button style="color: rgb(201, 23, 23);" [matMenuTriggerFor]="menu">מיין לפי</button>
+                    <mat-menu #menu="matMenu">
+                        <button mat-menu-item (click)="SortBy(sl)" *ngFor="let sl of sortList"  [value]="sl.value">{{sl.viewValue}}</button>
+                    </mat-menu>
+                </div>
+            </mat-grid-tile>
+            
+            <mat-grid-tile colspan="4">
+                <div id="filtering" >
+                    <div ></div>
+                    <button mat-button style="color: rgb(201, 23, 23); "(click)="drawer.toggle()">קטגוריות</button>
+                    <button mat-button style="color: rgb(201, 23, 23);" (click)="ProductToMove()">מוצרים למסירה</button>
+                    <button mat-button style="color: rgb(201, 23, 23);" (click)="ProductToBuy()">מוצרים למכירה</button>
+                    <button mat-button style="color: rgb(201, 23, 23);" (click)="NewProduct()">מוצרים חדשים</button>
+                    <button mat-button style="color: rgb(201, 23, 23);" (click)="OldProduct()">מוצרים יד-שניה</button>
+                    <mat-slider style="fill: rgb(201, 23, 23);" thumbLabel (change)="GetProductFilterCost()" [(ngModel)]="valueSlide" name="vslider" tickInterval="1000" step="1"  min="0" max="5000"></mat-slider>
+                    <span>שח</span>
+                </div>
+            </mat-grid-tile>
+          </mat-grid-list>
+          
+        <mat-drawer #drawer style="max-width: 200px;" mode="side">
+            <div class="rightSide" name="selectCat">                
+                <div *ngIf="ShowCat==true">
+                    <button mat-button style="min-width: 300px;"  (click)="SelectCategory(c)" *ngFor="let c of listOfCaterory" >{{c.NameCategory}}</button>
+                </div>
+
+                <div *ngIf="ShowCat==false">
+                    <p class="styleSubCat" (click)="Categories()" >{{nameCategory}}</p>
+                    <button mat-button style="min-width: 300px;" (click)="SelectProductBySubCategory(c)" *ngFor="let c of listOfSubCaterory" >{{c.NameSubCategory}}</button>
+                </div>
+            </div>
+        </mat-drawer>
+          <app-product *ngFor="let c of listOfProducts" class="list-group-item" [product]="c"></app-product>
+        </div>
+    </div>
+
+    <!--<mat-grid-list cols="5" rowHeight="6:2" >
+        <mat-grid-tile colspan="1" >
+            <div id="sort" >
+                <button mat-button style="color: rgb(201, 23, 23);" [matMenuTriggerFor]="menu">מיין לפי</button>
+                <mat-menu #menu="matMenu">
+                    <button mat-menu-item (click)="SortBy(sl)" *ngFor="let sl of sortList"  [value]="sl.value">{{sl.viewValue}}</button>
+                </mat-menu>
+            </div>
+        </mat-grid-tile>
+        <mat-grid-tile colspan="4">
+            <div id="filtering" >
+                <span>סנן מוצרים</span>
+                
+                <button mat-button style="color: rgb(201, 23, 23);" (click)="ProductToMove()">מוצרים למסירה</button>
+                <button mat-button style="color: rgb(201, 23, 23);" (click)="ProductToBuy()">מוצרים למכירה</button>
+                <button mat-button style="color: rgb(201, 23, 23);" (click)="NewProduct()">מוצרים חדשים</button>
+                <button mat-button style="color: rgb(201, 23, 23);" (click)="OldProduct()">מוצרים יד-שניה</button>
+                <mat-slider thumbLabel (change)="GetProductFilterCost()" [(ngModel)]="valueSlide" name="vslider" tickInterval="1000" step="1"  min="0" max="1000"></mat-slider>
+                <span>שח</span>
+            </div>
+        </mat-grid-tile>
+
+        <mat-grid-tile colspan="4" rowspan="5"> 
+            <app-product role="list" *ngFor="let c of listOfProducts" class="list-group-item" [product]="c"></app-product>
+        </mat-grid-tile>
+
+        <mat-grid-tile colspan="1" rowspan="6"  style="position: fixed; background-color: white; margin: 0px 0px 15px 0px;">
+        <mat-grid-tile-header style="background-color: white; color: black; font: bolder; font-size: larger;" class="tool">קטגוריות</mat-grid-tile-header>
+
+            <div class="rightSide" name="selectCat">                
+                <div *ngIf="ShowCat==true">
+                    <button mat-button style="min-width: 300px;"  (click)="SelectCategory(c)" *ngFor="let c of listOfCaterory" >{{c.NameCategory}}</button>
+                </div>
+
+                <div *ngIf="ShowCat==false">
+                    <span class="styleSubCat" (click)="Categories()" >{{nameCategory}}</span>
+                    <button mat-button style="min-width: 300px;" (click)="SelectProductBySubCategory(c)" *ngFor="let c of listOfSubCaterory" >{{c.NameSubCategory}}</button>
+                </div>
+            </div>
+        </mat-grid-tile>
+    </mat-grid-list>
+
+    <div class="content" role="main">
+        <div class="card">
+            <div class="form-group">
+              <input  type="email" class="form-control" id="search-text" aria-describedby="search-text" 
+                [(ngModel)]="searchText" placeholder="Enter text to search" 
+                autofocus>
+            </div>
+            <div class="list-group list-group-flush">
+                <div  *ngFor="let c of listOfProducts | filter: searchText" >
+                    <app-product class="list-group-item" [product]="c" appHighlight
+                    [searchedWord]="searchText" [content]="c" [classToApply]="'font-weight-bold'"></app-product>
+                </div>
+            </div>
+        </div>
+    </div>-->
+
+</div>

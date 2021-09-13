@@ -1,0 +1,24 @@
+<div *ngIf="showComp" class="popup">
+    <div class="pp">
+        <img style="height: 5%; width: 5%; cursor: pointer;" (click)="CloseShowPopUp()" src="assets/Icons/close.svg">
+        <h2><b>תשלום בכרטיס אשראי</b></h2>
+        <mat-form-field appearance="fill">
+            <mat-label>מספר כרטיס</mat-label>
+            <input matInput #postalCode1 minlength="16" maxlength="16" required pattern="^[0-9]*$" placeholder="0000 0000 0000 0000">
+            <mat-hint align="end">{{postalCode1.value.length}} / 16</mat-hint>
+        </mat-form-field><br>
+        <mat-form-field appearance="fill">
+            <mat-label>3 ספרות בגב הכרטיס</mat-label>
+            <input matInput #postalCode2 minlength="3" maxlength="3" required pattern="^[0-9]*$" placeholder="000">
+            <mat-hint align="end">{{postalCode2.value.length}} / 3</mat-hint>
+        </mat-form-field><br>
+        <mat-form-field appearance="fill">
+            <mat-label>תוקף הכרטיס</mat-label>
+            <input matInput type="month" placeholder="01">
+        </mat-form-field><br>
+        <mat-label>הסכום לתשלום</mat-label><br>
+        <b>{{sumPriceProduct}}</b><br>
+        <button [disabled]="!ablePuy" mat-raised-button (click)="Pay()">לתשלום</button>
+    </div>
+</div>
+<app-route *ngIf="showRoute" [ListOfRoute]="ListOfRoute"></app-route>

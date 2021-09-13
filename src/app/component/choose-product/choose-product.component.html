@@ -1,0 +1,27 @@
+<div class="pro" *ngIf="visible==false">
+    <div>
+        <table style="text-align: center; align-items: center;">
+            <h3 *ngIf="listChooseProduct.length==0" style="text-align: center;">אין תוצאות</h3>
+            <section class="example-section">
+                <tr style="min-width: 300px;" class="tableChooseProduct" *ngFor="let p of listChooseProduct">
+                    <td>{{p.NameProduct}}</td>
+                    <td style="width: 100px;">{{p.PriceProduct}}</td>
+                    <td style="width: 300px;">{{p.DescriptionProduct}}</td>
+                    <td><mat-icon (click)="DeletFromDb(p)" style="cursor: pointer;" matTooltip="הסר מהרשימה">delete</mat-icon></td>    
+                </tr>
+                <tr>
+                    <mat-divider></mat-divider>
+                </tr>
+            </section>
+        </table>
+    </div>
+
+    <div *ngIf="listChooseProduct.length>0">
+        <p>סה"כ עלות המוצרים <b>{{GetSumPrice()}}</b></p>
+        <button mat-raised-button (click)="BuyProduct()"><mat-label>לקניה</mat-label></button>
+    </div>
+</div>
+<div *ngIf="visible" >
+    <mat-progress-spinner style="color: rgb(150, 9, 9);"></mat-progress-spinner>
+    <app-payment [sumPriceProduct]="GetSumPrice()"></app-payment>
+</div>

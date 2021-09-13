@@ -1,0 +1,38 @@
+<div  *ngIf="showRoute">
+    <div class="productRote" style="display: flex;">
+        <div><h1>הביתה!</h1></div>
+        <div *ngFor="let i of ListOfRoute" style="display: flex; flex-direction: column;">
+            <div style="display: flex;">
+                <div style="display: flex; flex-direction: column; align-items: baseline; text-align: unset;">
+                    <div><mat-icon size="80">redo</mat-icon></div>
+                </div>
+                <div style="display: flex; flex-direction: column; align-items: center; text-align: center;">
+                    <div style="fill: rgb(201, 23, 23); height:200%; width: 200%;">
+                        <mat-icon size="100">location_on</mat-icon>
+                    </div>
+                    <div class="datailes">
+                        <div>{{i.NameProduct}}</div>
+                        <button mat-raised-button (click)="AllDetailes(i)">עוד פרטים</button>
+                        <div *ngIf="allDetailes">
+                            <p>{{GetAdress()}}</p>
+                            <p>{{i.PriceProduct}}</p>
+                            <p>{{i.DescriptionProduct}}</p>
+                        </div>
+                        <app-cost-offer [subCategory]="i.SubCategoryProduct" (DisassemblyAndassembly)="SumDisassemblyAndassembly($event)"></app-cost-offer>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
+    <div class="costs">
+        <p class="datailes">עלות הובלת המוצרים: {{ShowCostDelivary()}}</p>
+        <!--<p>מחירי פרוק והרכבת המוצרים: {{sumDisassemblyAndassembly}}</p>-->
+    </div>
+    <button style="margin: 20px;"  mat-raised-button (click)="GoToTheAvragePage()"> האם ברצונך להשפיע?</button>
+</div>
+<div *ngIf="aaaaa">
+    <div >
+        <app-avg-buy-of-user [ListOfroute]="ListOfRoute"></app-avg-buy-of-user>
+    </div>
+</div>

@@ -1,0 +1,76 @@
+<div>
+    <form   name="frm" #frm="ngForm">
+        <div *ngIf="start">
+            <div *ngFor="let i of signal">
+                {{ShowCostProduct(subCategory)}}
+            </div>
+        </div>
+        
+        <div *ngIf="showBed">
+            <mat-form-field >
+                <mat-label style="color: black;">בחר את סוג המיטה</mat-label>
+                <mat-select  [(ngModel)]="selectedBed" name="select">
+                    <mat-option (click)="costOfferBed()" [value]=1>מיטת יחיד</mat-option>
+                    <mat-option (click)="costOfferBed()" [value]=2>מיטה זוגית</mat-option>
+                    <mat-option (click)="costOfferBed()" [value]=3>מיטה וחצי</mat-option>
+                    <mat-option (click)="costOfferBed()" [value]=4>מיטת תינוק</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+        <div *ngIf="showCloset">
+            <mat-form-field>
+                <mat-label style="color: black;">הכנס את מספר הדלתות בארון</mat-label>
+                <input type="number" (change)="costOfferCloset()" matInput #numofDor="ngModel" name="numOfDor" [(ngModel)]="numOfDor" >
+            </mat-form-field>
+        </div>
+        <div *ngIf="showTable">
+            <form name="frmTable" #frmTable="ngForm">
+                <mat-form-field >
+                    <mat-label style="color: black;">האם השולחן צריך פירוק?</mat-label>
+                    <mat-select  [(ngModel)]="selectedTable" name="selectTable">
+                        <mat-option  [value]=true>כן</mat-option>
+                        <mat-option  [value]=false>לא</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </form>
+            <mat-form-field >
+                <mat-label style="color: black;">הכנס את גודל השולחן במטרים</mat-label>
+                <input type="number" matInput [disabled]="!frmTable.valid" (change)="costOfferTable()" #metrsOfTable="ngModel" name="MetrsOfTable" [(ngModel)]="MetrsOfTable" >
+            </mat-form-field >
+        </div>
+        <div *ngIf="showChair">
+            <mat-form-field>
+                <mat-label style="color: black;">הכנס את מספר הכסאות</mat-label>
+                <input type="number" (change)="costOfferChair()" matInput #numofChair="ngModel" name="numOfChair" [(ngModel)]="numOfChair" >
+            </mat-form-field>
+        </div>
+        <div *ngIf="showShidot">
+            <mat-form-field >
+                <mat-label style="color: black;">האם השידה צריכה פירוק?</mat-label>
+                <mat-select  [(ngModel)]="selectedShidot" name="selectShidot">
+                    <mat-option (click)="costOfferShidot()" [value]=true>כן</mat-option>
+                    <mat-option (click)="costOfferShidot()" [value]=false>לא</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+        <div  *ngIf="showSoffa">
+            <mat-form-field >
+                <mat-label style="color: black;">הכנס את גודל הספה במטרים</mat-label>
+                <input type="number" matInput (change)="costOfferSoffa()" #metrsofSoffa="ngModel" name="metrsOfSoffa" [(ngModel)]="metrsOfSoffa" >
+            </mat-form-field >
+        </div>
+       <div *ngIf="showCostOffer">
+            <span>עלות פירוק והרכבה:</span>
+            <span>{{perukAndHarkava}}</span>
+        </div>
+        <div *ngIf="showDelivery">
+            <div>
+            <span>הובלת המוצר למקום מגוריך כפי שמופיע במערכת:</span>
+            <br>
+            <span>{{costDelivery}}</span></div>
+        </div>
+        <div *ngIf="buy">
+            <button > האם ברצונך להשפיע?</button>
+        </div>
+    </form>
+</div>

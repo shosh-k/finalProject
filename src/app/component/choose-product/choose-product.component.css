@@ -1,0 +1,14 @@
+.pro{
+    background-color: rgb(240, 240, 240);
+    opacity:0.94;
+    height: 100%;
+}
+table{
+    text-align: right;
+    align-items: center;
+}
+td{
+    text-align: right;
+    font-size: large;
+    width: 200px;
+}
